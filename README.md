@@ -129,7 +129,7 @@ bind-address=0.0.0.0
 
 
 ### Схема: Восстановление ноды (SST и IST)
-![Восстановление ноды (SST и IST)](screenshots/NodeRecovery.svg)
+![Восстановление ноды SST и IST](screenshots/NodeRecovery.svg)
 ---
 
 
