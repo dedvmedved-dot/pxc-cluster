@@ -1,0 +1,13 @@
+sk@skhome01:~/pxc-cluster$ ssh ubuntu@192.168.122.31 sudo cat /etc/mysql/my.cnf | grep -v "^#" | grep -v "^$"
+[mysqld]
+wsrep-provider=/usr/lib/galera4/libgalera_smm.so
+wsrep-provider-options="socket.ssl=false"
+wsrep-cluster-name=pxc-cluster
+wsrep-cluster-address=gcomm://
+wsrep-node-name=pxc-node1
+wsrep-node-address=192.168.122.31
+wsrep-sst-method=xtrabackup-v2
+default-storage-engine=InnoDB
+bind-address=0.0.0.0
+character-set-server=utf8mb4
+collation-server=utf8mb4_unicode_ci

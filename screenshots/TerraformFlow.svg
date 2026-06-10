@@ -1,0 +1,95 @@
+<svg width="388pt" height="641pt" viewBox="0.00 0.00 388.00 641.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 636.8)">
+<title>TerraformFlow</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-636.8 384.06,-636.8 384.06,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-612.6" font-family="Arial" font-size="18.00">Создание инфраструктуры через Terraform</text>
+<!-- start -->
+<g id="node1" class="node">
+<title>start</title>
+<ellipse fill="#e8f0fe" stroke="black" cx="190.03" cy="-585.2" rx="27" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-582.2" font-family="Arial" font-size="10.00">Старт</text>
+</g>
+<!-- step1 -->
+<g id="node2" class="node">
+<title>step1</title>
+<polygon fill="#fce8e6" stroke="black" points="249.43,-531.2 130.63,-531.2 130.63,-475.2 249.43,-475.2 249.43,-531.2"/>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-518.2" font-family="Arial" font-size="10.00">terraform init</text>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-506.2" font-family="Arial" font-size="10.00">Загрузка провайдера</text>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-494.2" font-family="Arial" font-size="10.00">libvirt 0.7.1</text>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-482.2" font-family="Arial" font-size="10.00">из локального кэша</text>
+</g>
+<!-- start&#45;&gt;step1 -->
+<g id="edge1" class="edge">
+<title>start-&gt;step1</title>
+<path fill="none" stroke="black" d="M190.03,-567C190.03,-567 190.03,-543.17 190.03,-543.17"/>
+<polygon fill="black" stroke="black" points="193.53,-543.17 190.03,-533.17 186.53,-543.17 193.53,-543.17"/>
+</g>
+<!-- step2 -->
+<g id="node3" class="node">
+<title>step2</title>
+<polygon fill="#e6f4ea" stroke="black" points="241.1,-439.2 138.96,-439.2 138.96,-371.2 241.1,-371.2 241.1,-439.2"/>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-426.2" font-family="Arial" font-size="10.00">terraform plan</text>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-414.2" font-family="Arial" font-size="10.00">Чтение main.tf</text>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-402.2" font-family="Arial" font-size="10.00">План: 10 ресурсов</text>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-390.2" font-family="Arial" font-size="10.00">3 ВМ + диски +</text>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-378.2" font-family="Arial" font-size="10.00">cloud-init ISO</text>
+</g>
+<!-- step1&#45;&gt;step2 -->
+<g id="edge2" class="edge">
+<title>step1-&gt;step2</title>
+<path fill="none" stroke="black" d="M190.03,-474.85C190.03,-474.85 190.03,-450.89 190.03,-450.89"/>
+<polygon fill="black" stroke="black" points="193.53,-450.89 190.03,-440.89 186.53,-450.89 193.53,-450.89"/>
+</g>
+<!-- step3 -->
+<g id="node4" class="node">
+<title>step3</title>
+<polygon fill="#fff3e0" stroke="black" points="264.73,-335.2 115.33,-335.2 115.33,-207.2 264.73,-207.2 264.73,-335.2"/>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-322.2" font-family="Arial" font-size="10.00">terraform apply</text>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-310.2" font-family="Arial" font-size="10.00">Создание:</text>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-298.2" font-family="Arial" font-size="10.00">- libvirt_volume.ubuntu_image</text>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-286.2" font-family="Arial" font-size="10.00">  (образ Ubuntu 22.04)</text>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-274.2" font-family="Arial" font-size="10.00">- libvirt_volume.disk (×3)</text>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-262.2" font-family="Arial" font-size="10.00">  (диски ВМ по 20 ГБ)</text>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-250.2" font-family="Arial" font-size="10.00">- libvirt_cloudinit_disk (×3)</text>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-238.2" font-family="Arial" font-size="10.00">  (SSH-ключи)</text>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-226.2" font-family="Arial" font-size="10.00">- libvirt_domain.vm (×3)</text>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-214.2" font-family="Arial" font-size="10.00">  (виртуальные машины)</text>
+</g>
+<!-- step2&#45;&gt;step3 -->
+<g id="edge3" class="edge">
+<title>step2-&gt;step3</title>
+<path fill="none" stroke="black" d="M190.03,-371.04C190.03,-371.04 190.03,-347.04 190.03,-347.04"/>
+<polygon fill="black" stroke="black" points="193.53,-347.04 190.03,-337.04 186.53,-347.04 193.53,-347.04"/>
+</g>
+<!-- step4 -->
+<g id="node5" class="node">
+<title>step4</title>
+<polygon fill="#ffcdd2" stroke="black" points="265.54,-171.2 114.52,-171.2 114.52,-115.2 265.54,-115.2 265.54,-171.2"/>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-158.2" font-family="Arial" font-size="10.00">Проблема: DHCP не выдал IP</text>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-146.2" font-family="Arial" font-size="10.00">Решение: DHCP-резервации</text>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-134.2" font-family="Arial" font-size="10.00">по MAC-адресам</text>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-122.2" font-family="Arial" font-size="10.00">+ перезапуск libvirtd</text>
+</g>
+<!-- step3&#45;&gt;step4 -->
+<g id="edge4" class="edge">
+<title>step3-&gt;step4</title>
+<path fill="none" stroke="black" d="M190.03,-206.82C190.03,-206.82 190.03,-182.92 190.03,-182.92"/>
+<polygon fill="black" stroke="black" points="193.53,-182.92 190.03,-172.92 186.53,-182.92 193.53,-182.92"/>
+</g>
+<!-- end -->
+<g id="node6" class="node">
+<title>end</title>
+<ellipse fill="#c8e6c9" stroke="black" cx="190.03" cy="-39.6" rx="97.42" ry="39.6"/>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-54.6" font-family="Arial" font-size="10.00">3 ВМ запущены</text>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-42.6" font-family="Arial" font-size="10.00">pxc-node1: 192.168.122.31</text>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-30.6" font-family="Arial" font-size="10.00">pxc-node2: 192.168.122.32</text>
+<text xml:space="preserve" text-anchor="middle" x="190.03" y="-18.6" font-family="Arial" font-size="10.00">pxc-node3: 192.168.122.33</text>
+</g>
+<!-- step4&#45;&gt;end -->
+<g id="edge5" class="edge">
+<title>step4-&gt;end</title>
+<path fill="none" stroke="black" d="M190.03,-114.89C190.03,-114.89 190.03,-91.04 190.03,-91.04"/>
+<polygon fill="black" stroke="black" points="193.53,-91.04 190.03,-81.04 186.53,-91.04 193.53,-91.04"/>
+</g>
+</g>
+</svg>

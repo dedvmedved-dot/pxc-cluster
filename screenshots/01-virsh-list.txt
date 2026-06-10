@@ -1,0 +1,4 @@
+sk@skhome01:~/pxc-cluster$ virsh list --all | grep pxc
+ 25   pxc-node2      running
+ 26   pxc-node3      running
+ 27   pxc-node1      running

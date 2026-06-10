@@ -1,0 +1,146 @@
+<svg width="666pt" height="584pt" viewBox="0.00 0.00 666.00 584.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 580)">
+<title>TechStack</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-580 662,-580 662,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="329" y="-555.8" font-family="Arial" font-size="18.00">Технологический стек PXC Cluster</text>
+<g id="clust1" class="cluster">
+<title>cluster_iaac</title>
+<polygon fill="#e0e0e0" stroke="black" points="188,-424.8 188,-538.4 524,-538.4 524,-424.8 188,-424.8"/>
+<text xml:space="preserve" text-anchor="middle" x="356" y="-522.7" font-family="Arial" font-size="13.00">Infrastructure as Code</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_pxc_stack</title>
+<polygon fill="#e6f4ea" stroke="black" points="295,-164 295,-386 614,-386 614,-164 295,-164"/>
+<text xml:space="preserve" text-anchor="middle" x="454.5" y="-370.3" font-family="Arial" font-size="13.00">Percona XtraDB Cluster Stack</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_protocols</title>
+<polygon fill="#fff3e0" stroke="black" points="8,-8 8,-108.4 570,-108.4 570,-8 8,-8"/>
+<text xml:space="preserve" text-anchor="middle" x="289" y="-92.7" font-family="Arial" font-size="13.00">Протоколы и механизмы</text>
+</g>
+<!-- terraform -->
+<g id="node1" class="node">
+<title>terraform</title>
+<polygon fill="#bdbdbd" stroke="black" points="328.07,-500.2 195.93,-500.2 195.93,-439.4 328.07,-439.4 328.07,-500.2"/>
+<text xml:space="preserve" text-anchor="middle" x="262" y="-486.3" font-family="Arial" font-size="11.00">Terraform 1.12</text>
+<text xml:space="preserve" text-anchor="middle" x="262" y="-473.1" font-family="Arial" font-size="11.00">Провайдер libvirt</text>
+<text xml:space="preserve" text-anchor="middle" x="262" y="-459.9" font-family="Arial" font-size="11.00">3 виртуальные машины</text>
+<text xml:space="preserve" text-anchor="middle" x="262" y="-446.7" font-family="Arial" font-size="11.00">KVM/QEMU</text>
+</g>
+<!-- mysql -->
+<g id="node3" class="node">
+<title>mysql</title>
+<polygon fill="#a5d6a7" stroke="black" points="425.48,-354.4 302.52,-354.4 302.52,-293.6 425.48,-293.6 425.48,-354.4"/>
+<text xml:space="preserve" text-anchor="middle" x="364" y="-340.5" font-family="Arial" font-size="11.00">MySQL 8.0</text>
+<text xml:space="preserve" text-anchor="middle" x="364" y="-327.3" font-family="Arial" font-size="11.00">(Percona Server)</text>
+<text xml:space="preserve" text-anchor="middle" x="364" y="-314.1" font-family="Arial" font-size="11.00">SQL-движок</text>
+<text xml:space="preserve" text-anchor="middle" x="364" y="-300.9" font-family="Arial" font-size="11.00">Обработка запросов</text>
+</g>
+<!-- terraform&#45;&gt;mysql -->
+<g id="edge1" class="edge">
+<title>terraform-&gt;mysql</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M315.29,-439.24C315.29,-439.24 315.29,-366.04 315.29,-366.04"/>
+<polygon fill="black" stroke="black" points="318.79,-366.04 315.29,-356.04 311.79,-366.04 318.79,-366.04"/>
+<text xml:space="preserve" text-anchor="middle" x="324.25" y="-398.2" font-family="Times,serif" font-size="14.00">создаёт ВМ</text>
+</g>
+<!-- ansible -->
+<g id="node2" class="node">
+<title>ansible</title>
+<polygon fill="#bdbdbd" stroke="black" points="516.16,-506.8 385.84,-506.8 385.84,-432.8 516.16,-432.8 516.16,-506.8"/>
+<text xml:space="preserve" text-anchor="middle" x="451" y="-492.9" font-family="Arial" font-size="11.00">Ansible</text>
+<text xml:space="preserve" text-anchor="middle" x="451" y="-479.7" font-family="Arial" font-size="11.00">Роль pxc</text>
+<text xml:space="preserve" text-anchor="middle" x="451" y="-466.5" font-family="Arial" font-size="11.00">Установка пакетов</text>
+<text xml:space="preserve" text-anchor="middle" x="451" y="-453.3" font-family="Arial" font-size="11.00">Шаблоны конфигов</text>
+<text xml:space="preserve" text-anchor="middle" x="451" y="-440.1" font-family="Arial" font-size="11.00">Handlers перезапуска</text>
+</g>
+<!-- ansible&#45;&gt;mysql -->
+<g id="edge2" class="edge">
+<title>ansible-&gt;mysql</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M405.66,-432.63C405.66,-432.63 405.66,-366.22 405.66,-366.22"/>
+<polygon fill="black" stroke="black" points="409.16,-366.22 405.66,-356.22 402.16,-366.22 409.16,-366.22"/>
+<text xml:space="preserve" text-anchor="middle" x="481.5" y="-398.2" font-family="Times,serif" font-size="14.00">устанавливает</text>
+</g>
+<!-- galera -->
+<g id="node4" class="node">
+<title>galera</title>
+<polygon fill="#a5d6a7" stroke="black" points="456.76,-232.8 303.24,-232.8 303.24,-172 456.76,-172 456.76,-232.8"/>
+<text xml:space="preserve" text-anchor="middle" x="380" y="-218.9" font-family="Arial" font-size="11.00">Galera Replication 4.24</text>
+<text xml:space="preserve" text-anchor="middle" x="380" y="-205.7" font-family="Arial" font-size="11.00">Синхронная репликация</text>
+<text xml:space="preserve" text-anchor="middle" x="380" y="-192.5" font-family="Arial" font-size="11.00">Multi-master</text>
+<text xml:space="preserve" text-anchor="middle" x="380" y="-179.3" font-family="Arial" font-size="11.00">Сертификация транзакций</text>
+</g>
+<!-- mysql&#45;&gt;galera -->
+<g id="edge3" class="edge">
+<title>mysql-&gt;galera</title>
+<path fill="none" stroke="black" d="M364.36,-293.32C364.36,-293.32 364.36,-244.59 364.36,-244.59"/>
+<polygon fill="black" stroke="black" points="367.86,-244.59 364.36,-234.59 360.86,-244.59 367.86,-244.59"/>
+<text xml:space="preserve" text-anchor="middle" x="407" y="-259" font-family="Times,serif" font-size="14.00">использует</text>
+</g>
+<!-- gcomm -->
+<g id="node6" class="node">
+<title>gcomm</title>
+<polygon fill="#ffe0b2" stroke="black" points="163.71,-76.8 16.29,-76.8 16.29,-16 163.71,-16 163.71,-76.8"/>
+<text xml:space="preserve" text-anchor="middle" x="90" y="-62.9" font-family="Arial" font-size="11.00">gcomm</text>
+<text xml:space="preserve" text-anchor="middle" x="90" y="-49.7" font-family="Arial" font-size="11.00">Galera Communication</text>
+<text xml:space="preserve" text-anchor="middle" x="90" y="-36.5" font-family="Arial" font-size="11.00">Групповая коммуникация</text>
+<text xml:space="preserve" text-anchor="middle" x="90" y="-23.3" font-family="Arial" font-size="11.00">Порт 4567</text>
+</g>
+<!-- galera&#45;&gt;gcomm -->
+<g id="edge4" class="edge">
+<title>galera-&gt;gcomm</title>
+<path fill="none" stroke="black" d="M303.05,-202C217.13,-202 90,-202 90,-202 90,-202 90,-88.66 90,-88.66"/>
+<polygon fill="black" stroke="black" points="93.5,-88.66 90,-78.66 86.5,-88.66 93.5,-88.66"/>
+<text xml:space="preserve" text-anchor="middle" x="161" y="-129" font-family="Times,serif" font-size="14.00">коммуникация</text>
+</g>
+<!-- sst -->
+<g id="node7" class="node">
+<title>sst</title>
+<polygon fill="#ffe0b2" stroke="black" points="561.62,-76.8 426.38,-76.8 426.38,-16 561.62,-16 561.62,-76.8"/>
+<text xml:space="preserve" text-anchor="middle" x="494" y="-62.9" font-family="Arial" font-size="11.00">SST</text>
+<text xml:space="preserve" text-anchor="middle" x="494" y="-49.7" font-family="Arial" font-size="11.00">State Snapshot Transfer</text>
+<text xml:space="preserve" text-anchor="middle" x="494" y="-36.5" font-family="Arial" font-size="11.00">Полная копия данных</text>
+<text xml:space="preserve" text-anchor="middle" x="494" y="-23.3" font-family="Arial" font-size="11.00">xtrabackup-v2</text>
+</g>
+<!-- galera&#45;&gt;sst -->
+<g id="edge5" class="edge">
+<title>galera-&gt;sst</title>
+<path fill="none" stroke="black" d="M441.57,-171.58C441.57,-171.58 441.57,-88.67 441.57,-88.67"/>
+<polygon fill="black" stroke="black" points="445.07,-88.67 441.57,-78.67 438.07,-88.67 445.07,-88.67"/>
+<text xml:space="preserve" text-anchor="middle" x="493.5" y="-137.4" font-family="Times,serif" font-size="14.00">полная</text>
+<text xml:space="preserve" text-anchor="middle" x="493.5" y="-120.6" font-family="Times,serif" font-size="14.00">синхронизация</text>
+</g>
+<!-- ist -->
+<g id="node8" class="node">
+<title>ist</title>
+<polygon fill="#ffe0b2" stroke="black" points="368.11,-76.8 221.89,-76.8 221.89,-16 368.11,-16 368.11,-76.8"/>
+<text xml:space="preserve" text-anchor="middle" x="295" y="-62.9" font-family="Arial" font-size="11.00">IST</text>
+<text xml:space="preserve" text-anchor="middle" x="295" y="-49.7" font-family="Arial" font-size="11.00">Incremental State Transfer</text>
+<text xml:space="preserve" text-anchor="middle" x="295" y="-36.5" font-family="Arial" font-size="11.00">Инкрементальная</text>
+<text xml:space="preserve" text-anchor="middle" x="295" y="-23.3" font-family="Arial" font-size="11.00">синхронизация</text>
+</g>
+<!-- galera&#45;&gt;ist -->
+<g id="edge6" class="edge">
+<title>galera-&gt;ist</title>
+<path fill="none" stroke="black" d="M335.67,-171.58C335.67,-171.58 335.67,-88.67 335.67,-88.67"/>
+<polygon fill="black" stroke="black" points="339.17,-88.67 335.67,-78.67 332.17,-88.67 339.17,-88.67"/>
+<text xml:space="preserve" text-anchor="middle" x="332.5" y="-137.4" font-family="Times,serif" font-size="14.00">инкрементальная</text>
+<text xml:space="preserve" text-anchor="middle" x="332.5" y="-120.6" font-family="Times,serif" font-size="14.00">синхронизация</text>
+</g>
+<!-- xtrabackup -->
+<g id="node5" class="node">
+<title>xtrabackup</title>
+<polygon fill="#a5d6a7" stroke="black" points="606.5,-354.4 483.5,-354.4 483.5,-293.6 606.5,-293.6 606.5,-354.4"/>
+<text xml:space="preserve" text-anchor="middle" x="545" y="-340.5" font-family="Arial" font-size="11.00">Percona XtraBackup</text>
+<text xml:space="preserve" text-anchor="middle" x="545" y="-327.3" font-family="Arial" font-size="11.00">SST (State Snapshot)</text>
+<text xml:space="preserve" text-anchor="middle" x="545" y="-314.1" font-family="Arial" font-size="11.00">Копирование данных</text>
+<text xml:space="preserve" text-anchor="middle" x="545" y="-300.9" font-family="Arial" font-size="11.00">на новую ноду</text>
+</g>
+<!-- xtrabackup&#45;&gt;sst -->
+<g id="edge7" class="edge">
+<title>xtrabackup-&gt;sst</title>
+<path fill="none" stroke="black" d="M522.56,-293.23C522.56,-293.23 522.56,-88.4 522.56,-88.4"/>
+<polygon fill="black" stroke="black" points="526.06,-88.4 522.56,-78.4 519.06,-88.4 526.06,-88.4"/>
+<text xml:space="preserve" text-anchor="middle" x="616" y="-198.2" font-family="Times,serif" font-size="14.00">обеспечивает</text>
+</g>
+</g>
+</svg>

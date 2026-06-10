@@ -1,0 +1,10 @@
+sk@skhome01:~/pxc-cluster$ for ip in 192.168.122.31 192.168.122.32 192.168.122.33; do
+>   echo "Node $ip:"
+>   ssh ubuntu@$ip sudo mysql -u root -e "SHOW DATABASES" | grep test_cluster
+> done
+Node 192.168.122.31:
+test_cluster
+Node 192.168.122.32:
+test_cluster
+Node 192.168.122.33:
+test_cluster

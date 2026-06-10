@@ -1,0 +1,4 @@
+sk@skhome01:~/pxc-cluster$ sudo virsh net-dhcp-leases default | grep pxc
+ 2026-06-10 12:35:38   52:54:00:06:8c:51   ipv4       192.168.122.31/24    pxc-node1   ff:b5:5e:67:ff:00:02:00:00:ab:11:5e:7c:5b:cd:ae:f9:45:c5
+ 2026-06-10 12:34:39   52:54:00:16:75:24   ipv4       192.168.122.33/24    pxc-node3   ff:b5:5e:67:ff:00:02:00:00:ab:11:eb:8e:26:c7:e2:50:e7:d8
+ 2026-06-10 12:34:01   52:54:00:1a:b4:9e   ipv4       192.168.122.32/24    pxc-node2   ff:b5:5e:67:ff:00:02:00:00:ab:11:1f:9e:7f:f1:49:60:d8:e7

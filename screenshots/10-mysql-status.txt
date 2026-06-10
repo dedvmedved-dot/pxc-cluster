@@ -1,0 +1,25 @@
+sk@skhome01:~/pxc-cluster$ for ip in 192.168.122.31 192.168.122.32 192.168.122.33; do
+>   echo "=== $ip ==="
+>   ssh ubuntu@$ip systemctl status mysql --no-pager | head -5
+> done
+=== 192.168.122.31 ===
+● mysql.service - Percona XtraDB Cluster
+     Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset: enabled)
+     Active: active (running) since Wed 2026-06-10 08:31:26 UTC; 18min ago
+    Process: 37641 ExecStartPre=/usr/bin/mysql-systemd start-pre (code=exited, status=0/SUCCESS)
+    Process: 37697 ExecStartPre=/usr/bin/mysql-systemd check-grastate (code=exited, status=0/SUCCESS)
+
+=== 192.168.122.32 ===
+● mysql.service - Percona XtraDB Cluster
+     Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset: enabled)
+     Active: active (running) since Wed 2026-06-10 08:31:39 UTC; 18min ago
+    Process: 39303 ExecStartPre=/usr/bin/mysql-systemd start-pre (code=exited, status=0/SUCCESS)
+    Process: 39359 ExecStartPre=/usr/bin/mysql-systemd check-grastate (code=exited, status=0/SUCCESS)
+
+=== 192.168.122.33 ===
+● mysql.service - Percona XtraDB Cluster
+     Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset: enabled)
+     Active: active (running) since Wed 2026-06-10 08:34:08 UTC; 16min ago
+    Process: 29111 ExecStartPre=/usr/bin/mysql-systemd start-pre (code=exited, status=0/SUCCESS)
+    Process: 29167 ExecStartPre=/usr/bin/mysql-systemd check-grastate (code=exited, status=0/SUCCESS)
+

@@ -1,0 +1,122 @@
+<svg width="420pt" height="585pt" viewBox="0.00 0.00 420.00 585.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 580.85)">
+<title>GaleraReplication</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-580.85 415.91,-580.85 415.91,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="205.95" y="-556.65" font-family="Arial" font-size="18.00">Процесс синхронной репликации в Galera</text>
+<!-- client -->
+<g id="node1" class="node">
+<title>client</title>
+<ellipse fill="#e8f0fe" stroke="black" cx="258.63" cy="-524.63" rx="81.25" ry="22.63"/>
+<text xml:space="preserve" text-anchor="middle" x="258.63" y="-527.63" font-family="Arial" font-size="10.00">Клиент</text>
+<text xml:space="preserve" text-anchor="middle" x="258.63" y="-515.63" font-family="Arial" font-size="10.00">INSERT INTO users...</text>
+</g>
+<!-- step1 -->
+<g id="node2" class="node">
+<title>step1</title>
+<polygon fill="#fce8e6" stroke="black" points="253.1,-465 118.16,-465 118.16,-429 253.1,-429 253.1,-465"/>
+<text xml:space="preserve" text-anchor="middle" x="185.63" y="-450" font-family="Arial" font-size="10.00">1. Клиент отправляет</text>
+<text xml:space="preserve" text-anchor="middle" x="185.63" y="-438" font-family="Arial" font-size="10.00">транзакцию на pxc-node1</text>
+</g>
+<!-- client&#45;&gt;step1 -->
+<g id="edge1" class="edge">
+<title>client-&gt;step1</title>
+<path fill="none" stroke="black" d="M215.24,-505.04C215.24,-505.04 215.24,-476.76 215.24,-476.76"/>
+<polygon fill="black" stroke="black" points="218.74,-476.76 215.24,-466.76 211.74,-476.76 218.74,-476.76"/>
+</g>
+<!-- step2 -->
+<g id="node3" class="node">
+<title>step2</title>
+<polygon fill="#fce8e6" stroke="black" points="239.93,-392 113.33,-392 113.33,-348 239.93,-348 239.93,-392"/>
+<text xml:space="preserve" text-anchor="middle" x="176.63" y="-379" font-family="Arial" font-size="10.00">2. pxc-node1 выполняет</text>
+<text xml:space="preserve" text-anchor="middle" x="176.63" y="-367" font-family="Arial" font-size="10.00">транзакцию локально</text>
+<text xml:space="preserve" text-anchor="middle" x="176.63" y="-355" font-family="Arial" font-size="10.00">и создаёт writeset</text>
+</g>
+<!-- step1&#45;&gt;step2 -->
+<g id="edge2" class="edge">
+<title>step1-&gt;step2</title>
+<path fill="none" stroke="black" d="M179.05,-428.75C179.05,-428.75 179.05,-403.75 179.05,-403.75"/>
+<polygon fill="black" stroke="black" points="182.55,-403.75 179.05,-393.75 175.55,-403.75 182.55,-403.75"/>
+</g>
+<!-- step3 -->
+<g id="node4" class="node">
+<title>step3</title>
+<polygon fill="#fff3e0" stroke="black" points="230.65,-311 94.61,-311 94.61,-267 230.65,-267 230.65,-311"/>
+<text xml:space="preserve" text-anchor="middle" x="162.63" y="-298" font-family="Arial" font-size="10.00">3. pxc-node1 рассылает</text>
+<text xml:space="preserve" text-anchor="middle" x="162.63" y="-286" font-family="Arial" font-size="10.00">writeset всем нодам</text>
+<text xml:space="preserve" text-anchor="middle" x="162.63" y="-274" font-family="Arial" font-size="10.00">через gcomm (порт 4567)</text>
+</g>
+<!-- step2&#45;&gt;step3 -->
+<g id="edge3" class="edge">
+<title>step2-&gt;step3</title>
+<path fill="none" stroke="black" d="M171.99,-347.87C171.99,-347.87 171.99,-322.9 171.99,-322.9"/>
+<polygon fill="black" stroke="black" points="175.49,-322.9 171.99,-312.9 168.49,-322.9 175.49,-322.9"/>
+</g>
+<!-- step4 -->
+<g id="node5" class="node">
+<title>step4</title>
+<polygon fill="#fff3e0" stroke="black" points="225.36,-230 99.9,-230 99.9,-186 225.36,-186 225.36,-230"/>
+<text xml:space="preserve" text-anchor="middle" x="162.63" y="-217" font-family="Arial" font-size="10.00">4. Каждая нода</text>
+<text xml:space="preserve" text-anchor="middle" x="162.63" y="-205" font-family="Arial" font-size="10.00">сертифицирует writeset</text>
+<text xml:space="preserve" text-anchor="middle" x="162.63" y="-193" font-family="Arial" font-size="10.00">(проверяет конфликты)</text>
+</g>
+<!-- step3&#45;&gt;step4 -->
+<g id="edge4" class="edge">
+<title>step3-&gt;step4</title>
+<path fill="none" stroke="black" d="M162.63,-266.87C162.63,-266.87 162.63,-241.9 162.63,-241.9"/>
+<polygon fill="black" stroke="black" points="166.13,-241.9 162.63,-231.9 159.13,-241.9 166.13,-241.9"/>
+</g>
+<!-- step5 -->
+<g id="node6" class="node">
+<title>step5</title>
+<polygon fill="#e6f4ea" stroke="black" points="222.03,-149 103.23,-149 103.23,-93 222.03,-93 222.03,-149"/>
+<text xml:space="preserve" text-anchor="middle" x="162.63" y="-136" font-family="Arial" font-size="10.00">5. Если сертификация</text>
+<text xml:space="preserve" text-anchor="middle" x="162.63" y="-124" font-family="Arial" font-size="10.00">пройдена — нода</text>
+<text xml:space="preserve" text-anchor="middle" x="162.63" y="-112" font-family="Arial" font-size="10.00">применяет writeset</text>
+<text xml:space="preserve" text-anchor="middle" x="162.63" y="-100" font-family="Arial" font-size="10.00">и отправляет ACK</text>
+</g>
+<!-- step4&#45;&gt;step5 -->
+<g id="edge5" class="edge">
+<title>step4-&gt;step5</title>
+<path fill="none" stroke="black" d="M162.63,-185.6C162.63,-185.6 162.63,-160.77 162.63,-160.77"/>
+<polygon fill="black" stroke="black" points="166.13,-160.77 162.63,-150.77 159.13,-160.77 166.13,-160.77"/>
+</g>
+<!-- step6 -->
+<g id="node7" class="node">
+<title>step6</title>
+<polygon fill="#e6f4ea" stroke="black" points="397.8,-56 263.46,-56 263.46,0 397.8,0 397.8,-56"/>
+<text xml:space="preserve" text-anchor="middle" x="330.63" y="-43" font-family="Arial" font-size="10.00">6. pxc-node1 получает</text>
+<text xml:space="preserve" text-anchor="middle" x="330.63" y="-31" font-family="Arial" font-size="10.00">ACK от всех нод</text>
+<text xml:space="preserve" text-anchor="middle" x="330.63" y="-19" font-family="Arial" font-size="10.00">и подтверждает COMMIT</text>
+<text xml:space="preserve" text-anchor="middle" x="330.63" y="-7" font-family="Arial" font-size="10.00">клиенту</text>
+</g>
+<!-- step5&#45;&gt;step6 -->
+<g id="edge6" class="edge">
+<title>step5-&gt;step6</title>
+<path fill="none" stroke="black" d="M217.65,-92.59C217.65,-65.24 217.65,-28 217.65,-28 217.65,-28 251.76,-28 251.76,-28"/>
+<polygon fill="black" stroke="black" points="251.76,-31.5 261.76,-28 251.76,-24.5 251.76,-31.5"/>
+</g>
+<!-- note -->
+<g id="node8" class="node">
+<title>note</title>
+<polygon fill="#ffcdd2" stroke="black" points="207.26,-50 0,-50 0,-6 213.26,-6 213.26,-44 207.26,-50"/>
+<polyline fill="none" stroke="black" points="207.26,-50 207.26,-44"/>
+<polyline fill="none" stroke="black" points="213.26,-44 207.26,-44"/>
+<text xml:space="preserve" text-anchor="middle" x="106.63" y="-37" font-family="Arial" font-size="10.00">Важно: Если хотя бы одна нода</text>
+<text xml:space="preserve" text-anchor="middle" x="106.63" y="-25" font-family="Arial" font-size="10.00">не ответила — транзакция откатывается</text>
+<text xml:space="preserve" text-anchor="middle" x="106.63" y="-13" font-family="Arial" font-size="10.00">на всех узлах (atomic commit)</text>
+</g>
+<!-- step5&#45;&gt;note -->
+<g id="edge8" class="edge">
+<title>step5-&gt;note</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M158.24,-92.59C158.24,-92.59 158.24,-61.85 158.24,-61.85"/>
+<polygon fill="black" stroke="black" points="161.74,-61.85 158.24,-51.85 154.74,-61.85 161.74,-61.85"/>
+</g>
+<!-- step6&#45;&gt;client -->
+<g id="edge7" class="edge">
+<title>step6-&gt;client</title>
+<path fill="none" stroke="#34a853" stroke-width="2" d="M301.67,-56.48C301.67,-56.48 301.67,-492.07 301.67,-492.07"/>
+<polygon fill="#34a853" stroke="#34a853" stroke-width="2" points="298.17,-492.07 301.67,-502.07 305.17,-492.07 298.17,-492.07"/>
+<text xml:space="preserve" text-anchor="middle" x="371.27" y="-284.8" font-family="Times,serif" font-size="14.00">COMMIT OK</text>
+</g>
+</g>
+</svg>

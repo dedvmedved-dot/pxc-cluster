@@ -1,0 +1,186 @@
+<svg width="371pt" height="1200pt" viewBox="0.00 0.00 371.00 1200.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 1195.83)">
+<title>Troubleshooting</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-1195.83 367.07,-1195.83 367.07,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-1171.63" font-family="Arial" font-size="18.00">Хронология проблем при настройке PXC</text>
+<!-- start -->
+<g id="node1" class="node">
+<title>start</title>
+<ellipse fill="#e8f0fe" stroke="black" cx="181.54" cy="-1144.23" rx="61.41" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-1141.23" font-family="Arial" font-size="10.00">Начало настройки</text>
+</g>
+<!-- p1 -->
+<g id="node2" class="node">
+<title>p1</title>
+<polygon fill="#ffcdd2" stroke="black" points="267.9,-1090.23 95.17,-1090.23 95.17,-1022.23 267.9,-1022.23 267.9,-1090.23"/>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-1077.23" font-family="Arial" font-size="10.00">Проблема 1: Синтаксис конфига</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-1065.23" font-family="Arial" font-size="10.00">wsrep_sst_auth → ошибка</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-1053.23" font-family="Arial" font-size="10.00">'unknown variable'</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-1041.23" font-family="Arial" font-size="10.00">Причина: Percona 8.0 использует</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-1029.23" font-family="Arial" font-size="10.00">дефисы вместо подчёркиваний</text>
+</g>
+<!-- start&#45;&gt;p1 -->
+<g id="edge1" class="edge">
+<title>start-&gt;p1</title>
+<path fill="none" stroke="black" d="M181.54,-1125.99C181.54,-1125.99 181.54,-1101.95 181.54,-1101.95"/>
+<polygon fill="black" stroke="black" points="185.04,-1101.95 181.54,-1091.95 178.04,-1101.95 185.04,-1101.95"/>
+</g>
+<!-- s1 -->
+<g id="node3" class="node">
+<title>s1</title>
+<polygon fill="#c8e6c9" stroke="black" points="265.1,-986.23 97.97,-986.23 97.97,-930.23 265.1,-930.23 265.1,-986.23"/>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-973.23" font-family="Arial" font-size="10.00">Решение 1:</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-961.23" font-family="Arial" font-size="10.00">Заменили wsrep_sst_auth</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-949.23" font-family="Arial" font-size="10.00">на wsrep-sst-auth</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-937.23" font-family="Arial" font-size="10.00">(дефисы вместо подчёркиваний)</text>
+</g>
+<!-- p1&#45;&gt;s1 -->
+<g id="edge2" class="edge">
+<title>p1-&gt;s1</title>
+<path fill="none" stroke="black" d="M181.54,-1021.95C181.54,-1021.95 181.54,-998 181.54,-998"/>
+<polygon fill="black" stroke="black" points="185.04,-998 181.54,-988 178.04,-998 185.04,-998"/>
+</g>
+<!-- p2 -->
+<g id="node4" class="node">
+<title>p2</title>
+<polygon fill="#ffcdd2" stroke="black" points="265.94,-894.23 97.13,-894.23 97.13,-826.23 265.94,-826.23 265.94,-894.23"/>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-881.23" font-family="Arial" font-size="10.00">Проблема 2: MySQL не стартует</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-869.23" font-family="Arial" font-size="10.00">'wsrep-sst-auth' всё равно</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-857.23" font-family="Arial" font-size="10.00">не принимается</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-845.23" font-family="Arial" font-size="10.00">Причина: переменная невалидна</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-833.23" font-family="Arial" font-size="10.00">в Percona 8.0.45</text>
+</g>
+<!-- s1&#45;&gt;p2 -->
+<g id="edge3" class="edge">
+<title>s1-&gt;p2</title>
+<path fill="none" stroke="black" d="M181.54,-929.88C181.54,-929.88 181.54,-905.92 181.54,-905.92"/>
+<polygon fill="black" stroke="black" points="185.04,-905.92 181.54,-895.92 178.04,-905.92 185.04,-905.92"/>
+</g>
+<!-- s2 -->
+<g id="node5" class="node">
+<title>s2</title>
+<polygon fill="#c8e6c9" stroke="black" points="267.33,-790.23 95.74,-790.23 95.74,-734.23 267.33,-734.23 267.33,-790.23"/>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-777.23" font-family="Arial" font-size="10.00">Решение 2:</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-765.23" font-family="Arial" font-size="10.00">Убрали wsrep-sst-auth из [mysqld]</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-753.23" font-family="Arial" font-size="10.00">Добавили секцию [sst]</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-741.23" font-family="Arial" font-size="10.00">sstuser и sstpassword отдельно</text>
+</g>
+<!-- p2&#45;&gt;s2 -->
+<g id="edge4" class="edge">
+<title>p2-&gt;s2</title>
+<path fill="none" stroke="black" d="M181.54,-825.95C181.54,-825.95 181.54,-802 181.54,-802"/>
+<polygon fill="black" stroke="black" points="185.04,-802 181.54,-792 178.04,-802 185.04,-802"/>
+</g>
+<!-- p3 -->
+<g id="node6" class="node">
+<title>p3</title>
+<polygon fill="#ffcdd2" stroke="black" points="260.39,-698.23 102.68,-698.23 102.68,-618.23 260.39,-618.23 260.39,-698.23"/>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-685.23" font-family="Arial" font-size="10.00">Проблема 3: SSL-сертификаты</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-673.23" font-family="Arial" font-size="10.00">'certificate signature failure'</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-661.23" font-family="Arial" font-size="10.00">'failed to establish connection'</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-649.23" font-family="Arial" font-size="10.00">Причина: самоподписанные</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-637.23" font-family="Arial" font-size="10.00">сертификаты на разных нодах</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-625.23" font-family="Arial" font-size="10.00">не совпадают</text>
+</g>
+<!-- s2&#45;&gt;p3 -->
+<g id="edge5" class="edge">
+<title>s2-&gt;p3</title>
+<path fill="none" stroke="black" d="M181.54,-733.81C181.54,-733.81 181.54,-710.21 181.54,-710.21"/>
+<polygon fill="black" stroke="black" points="185.04,-710.21 181.54,-700.21 178.04,-710.21 185.04,-710.21"/>
+</g>
+<!-- s3 -->
+<g id="node7" class="node">
+<title>s3</title>
+<polygon fill="#c8e6c9" stroke="black" points="282.29,-582.23 80.78,-582.23 80.78,-526.23 282.29,-526.23 282.29,-582.23"/>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-569.23" font-family="Arial" font-size="10.00">Решение 3:</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-557.23" font-family="Arial" font-size="10.00">wsrep-provider-options="socket.ssl=false"</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-545.23" font-family="Arial" font-size="10.00">Отключили SSL для Galera</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-533.23" font-family="Arial" font-size="10.00">на всех нодах</text>
+</g>
+<!-- p3&#45;&gt;s3 -->
+<g id="edge6" class="edge">
+<title>p3-&gt;s3</title>
+<path fill="none" stroke="black" d="M181.54,-618.02C181.54,-618.02 181.54,-593.93 181.54,-593.93"/>
+<polygon fill="black" stroke="black" points="185.04,-593.93 181.54,-583.93 178.04,-593.93 185.04,-593.93"/>
+</g>
+<!-- p4 -->
+<g id="node8" class="node">
+<title>p4</title>
+<polygon fill="#ffcdd2" stroke="black" points="265.65,-490.23 97.42,-490.23 97.42,-410.23 265.65,-410.23 265.65,-490.23"/>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-477.23" font-family="Arial" font-size="10.00">Проблема 4: SST не работает</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-465.23" font-family="Arial" font-size="10.00">'Resource temporarily unavailable'</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-453.23" font-family="Arial" font-size="10.00">'Will never receive state'</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-441.23" font-family="Arial" font-size="10.00">Причина: xtrabackup не может</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-429.23" font-family="Arial" font-size="10.00">передать данные из-за сетевых</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-417.23" font-family="Arial" font-size="10.00">ограничений и ошибок socat</text>
+</g>
+<!-- s3&#45;&gt;p4 -->
+<g id="edge7" class="edge">
+<title>s3-&gt;p4</title>
+<path fill="none" stroke="black" d="M181.54,-525.81C181.54,-525.81 181.54,-502.21 181.54,-502.21"/>
+<polygon fill="black" stroke="black" points="185.04,-502.21 181.54,-492.21 178.04,-502.21 185.04,-502.21"/>
+</g>
+<!-- s4 -->
+<g id="node9" class="node">
+<title>s4</title>
+<polygon fill="#c8e6c9" stroke="black" points="268.72,-374.23 94.35,-374.23 94.35,-306.23 268.72,-306.23 268.72,-374.23"/>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-361.23" font-family="Arial" font-size="10.00">Решение 4:</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-349.23" font-family="Arial" font-size="10.00">Ручное копирование /var/lib/mysql</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-337.23" font-family="Arial" font-size="10.00">с pxc-node1 на остальные ноды</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-325.23" font-family="Arial" font-size="10.00">через tar + scp</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-313.23" font-family="Arial" font-size="10.00">+ очистка gcache и gvwstate.dat</text>
+</g>
+<!-- p4&#45;&gt;s4 -->
+<g id="edge8" class="edge">
+<title>p4-&gt;s4</title>
+<path fill="none" stroke="black" d="M181.54,-409.89C181.54,-409.89 181.54,-385.92 181.54,-385.92"/>
+<polygon fill="black" stroke="black" points="185.04,-385.92 181.54,-375.92 178.04,-385.92 185.04,-385.92"/>
+</g>
+<!-- p5 -->
+<g id="node10" class="node">
+<title>p5</title>
+<polygon fill="#ffcdd2" stroke="black" points="283.73,-270.23 79.34,-270.23 79.34,-202.23 283.73,-202.23 283.73,-270.23"/>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-257.23" font-family="Arial" font-size="10.00">Проблема 5: pxc-node3 не подключается</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-245.23" font-family="Arial" font-size="10.00">'Connection timed out'</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-233.23" font-family="Arial" font-size="10.00">Причина: в wsrep-cluster-address</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-221.23" font-family="Arial" font-size="10.00">указан только pxc-node1,</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-209.23" font-family="Arial" font-size="10.00">но pxc-node1 не принимает SST</text>
+</g>
+<!-- s4&#45;&gt;p5 -->
+<g id="edge9" class="edge">
+<title>s4-&gt;p5</title>
+<path fill="none" stroke="black" d="M181.54,-305.88C181.54,-305.88 181.54,-282.04 181.54,-282.04"/>
+<polygon fill="black" stroke="black" points="185.04,-282.04 181.54,-272.04 178.04,-282.04 185.04,-282.04"/>
+</g>
+<!-- s5 -->
+<g id="node11" class="node">
+<title>s5</title>
+<polygon fill="#c8e6c9" stroke="black" points="281,-166.23 82.08,-166.23 82.08,-98.23 281,-98.23 281,-166.23"/>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-153.23" font-family="Arial" font-size="10.00">Решение 5:</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-141.23" font-family="Arial" font-size="10.00">Добавили pxc-node2 в</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-129.23" font-family="Arial" font-size="10.00">wsrep-cluster-address:</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-117.23" font-family="Arial" font-size="10.00">gcomm://192.168.122.31,192.168.122.32</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-105.23" font-family="Arial" font-size="10.00">Нода подключилась через IST</text>
+</g>
+<!-- p5&#45;&gt;s5 -->
+<g id="edge10" class="edge">
+<title>p5-&gt;s5</title>
+<path fill="none" stroke="black" d="M181.54,-201.88C181.54,-201.88 181.54,-178.04 181.54,-178.04"/>
+<polygon fill="black" stroke="black" points="185.04,-178.04 181.54,-168.04 178.04,-178.04 185.04,-178.04"/>
+</g>
+<!-- success -->
+<g id="node12" class="node">
+<title>success</title>
+<ellipse fill="#a5d6a7" stroke="black" stroke-width="2" cx="181.54" cy="-31.11" rx="83.43" ry="31.11"/>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-40.11" font-family="Arial" font-size="10.00">Кластер из 3 нод</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-28.11" font-family="Arial" font-size="10.00">работает</text>
+<text xml:space="preserve" text-anchor="middle" x="181.54" y="-16.11" font-family="Arial" font-size="10.00">wsrep_cluster_size = 3</text>
+</g>
+<!-- s5&#45;&gt;success -->
+<g id="edge11" class="edge">
+<title>s5-&gt;success</title>
+<path fill="none" stroke="black" d="M181.54,-97.99C181.54,-97.99 181.54,-74.44 181.54,-74.44"/>
+<polygon fill="black" stroke="black" points="185.04,-74.44 181.54,-64.44 178.04,-74.44 185.04,-74.44"/>
+</g>
+</g>
+</svg>

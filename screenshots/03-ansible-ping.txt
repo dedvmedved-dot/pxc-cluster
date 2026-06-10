@@ -1,0 +1,13 @@
+sk@skhome01:~/pxc-cluster/ansible$ ansible all -i inventory.ini -m ping
+pxc-node1 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+pxc-node2 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+pxc-node3 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}

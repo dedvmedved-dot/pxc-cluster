@@ -1,0 +1,1 @@
+sk@skhome01:~/pxc-cluster$ ssh ubuntu@192.168.122.31 sudo mysql -u root -e "CREATE DATABASE test_cluster;"

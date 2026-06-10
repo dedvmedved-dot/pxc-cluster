@@ -1,0 +1,99 @@
+<svg width="318pt" height="676pt" viewBox="0.00 0.00 318.00 676.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 672.11)">
+<title>AnsibleFlow</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-672.11 314.08,-672.11 314.08,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-647.91" font-family="Arial" font-size="18.00">Настройка кластера через Ansible</text>
+<!-- start -->
+<g id="node1" class="node">
+<title>start</title>
+<ellipse fill="#e8f0fe" stroke="black" cx="155.04" cy="-615.88" rx="64.38" ry="22.63"/>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-618.88" font-family="Arial" font-size="10.00">ansible-playbook</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-606.88" font-family="Arial" font-size="10.00">deploy.yml</text>
+</g>
+<!-- role1 -->
+<g id="node2" class="node">
+<title>role1</title>
+<polygon fill="#e6f4ea" stroke="black" points="245.84,-557.25 64.24,-557.25 64.24,-477.25 245.84,-477.25 245.84,-557.25"/>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-544.25" font-family="Arial" font-size="10.00">Роль 1: Установка</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-532.25" font-family="Arial" font-size="10.00">- Добавление репозитория Percona</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-520.25" font-family="Arial" font-size="10.00">- percona-release setup pxc-80</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-508.25" font-family="Arial" font-size="10.00">- apt install percona-xtradb-cluster</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-496.25" font-family="Arial" font-size="10.00">- Установка xtrabackup</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-484.25" font-family="Arial" font-size="10.00">- Установка socat</text>
+</g>
+<!-- start&#45;&gt;role1 -->
+<g id="edge1" class="edge">
+<title>start-&gt;role1</title>
+<path fill="none" stroke="black" d="M155.04,-592.76C155.04,-592.76 155.04,-569.13 155.04,-569.13"/>
+<polygon fill="black" stroke="black" points="158.54,-569.13 155.04,-559.13 151.54,-569.13 158.54,-569.13"/>
+</g>
+<!-- role2 -->
+<g id="node3" class="node">
+<title>role2</title>
+<polygon fill="#e6f4ea" stroke="black" points="230.84,-441.25 79.24,-441.25 79.24,-325.25 230.84,-325.25 230.84,-441.25"/>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-428.25" font-family="Arial" font-size="10.00">Роль 2: Конфигурация</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-416.25" font-family="Arial" font-size="10.00">- Шаблон /etc/mysql/my.cnf</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-404.25" font-family="Arial" font-size="10.00">  с Jinja2-переменными</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-392.25" font-family="Arial" font-size="10.00">- wsrep-cluster-address</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-380.25" font-family="Arial" font-size="10.00">  зависит от имени хоста</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-368.25" font-family="Arial" font-size="10.00">- wsrep-node-address</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-356.25" font-family="Arial" font-size="10.00">  разный для каждой ноды</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-344.25" font-family="Arial" font-size="10.00">- Отключение SSL для Galera</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-332.25" font-family="Arial" font-size="10.00">  (socket.ssl=false)</text>
+</g>
+<!-- role1&#45;&gt;role2 -->
+<g id="edge2" class="edge">
+<title>role1-&gt;role2</title>
+<path fill="none" stroke="black" d="M155.04,-477.05C155.04,-477.05 155.04,-452.78 155.04,-452.78"/>
+<polygon fill="black" stroke="black" points="158.54,-452.78 155.04,-442.78 151.54,-452.78 158.54,-452.78"/>
+</g>
+<!-- role3 -->
+<g id="node4" class="node">
+<title>role3</title>
+<polygon fill="#e6f4ea" stroke="black" points="230.42,-289.25 79.66,-289.25 79.66,-197.25 230.42,-197.25 230.42,-289.25"/>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-276.25" font-family="Arial" font-size="10.00">Роль 3: Запуск</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-264.25" font-family="Arial" font-size="10.00">- pxc-node1: bootstrap</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-252.25" font-family="Arial" font-size="10.00">  WSREP_NEW_CLUSTER=1</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-240.25" font-family="Arial" font-size="10.00">- pxc-node2: подключение</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-228.25" font-family="Arial" font-size="10.00">  к pxc-node1</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-216.25" font-family="Arial" font-size="10.00">- pxc-node3: подключение</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-204.25" font-family="Arial" font-size="10.00">  к pxc-node1 и pxc-node2</text>
+</g>
+<!-- role2&#45;&gt;role3 -->
+<g id="edge3" class="edge">
+<title>role2-&gt;role3</title>
+<path fill="none" stroke="black" d="M155.04,-325.1C155.04,-325.1 155.04,-301.02 155.04,-301.02"/>
+<polygon fill="black" stroke="black" points="158.54,-301.02 155.04,-291.02 151.54,-301.02 158.54,-301.02"/>
+</g>
+<!-- role4 -->
+<g id="node5" class="node">
+<title>role4</title>
+<polygon fill="#e6f4ea" stroke="black" points="245.56,-161.25 64.52,-161.25 64.52,-81.25 245.56,-81.25 245.56,-161.25"/>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-148.25" font-family="Arial" font-size="10.00">Роль 4: Настройка SST</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-136.25" font-family="Arial" font-size="10.00">- Создание sstuser</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-124.25" font-family="Arial" font-size="10.00">- GRANT RELOAD, LOCK TABLES,</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-112.25" font-family="Arial" font-size="10.00">  PROCESS, REPLICATION CLIENT</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-100.25" font-family="Arial" font-size="10.00">- Пароль: SstPass123</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-88.25" font-family="Arial" font-size="10.00">- Доступ с 192.168.122.%</text>
+</g>
+<!-- role3&#45;&gt;role4 -->
+<g id="edge4" class="edge">
+<title>role3-&gt;role4</title>
+<path fill="none" stroke="black" d="M155.04,-196.78C155.04,-196.78 155.04,-173.13 155.04,-173.13"/>
+<polygon fill="black" stroke="black" points="158.54,-173.13 155.04,-163.13 151.54,-173.13 158.54,-173.13"/>
+</g>
+<!-- end -->
+<g id="node6" class="node">
+<title>end</title>
+<ellipse fill="#c8e6c9" stroke="black" cx="155.04" cy="-22.63" rx="68.29" ry="22.63"/>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-25.63" font-family="Arial" font-size="10.00">Кластер из 3 нод</text>
+<text xml:space="preserve" text-anchor="middle" x="155.04" y="-13.63" font-family="Arial" font-size="10.00">работает</text>
+</g>
+<!-- role4&#45;&gt;end -->
+<g id="edge5" class="edge">
+<title>role4-&gt;end</title>
+<path fill="none" stroke="black" d="M155.04,-80.85C155.04,-80.85 155.04,-57.09 155.04,-57.09"/>
+<polygon fill="black" stroke="black" points="158.54,-57.09 155.04,-47.09 151.54,-57.09 158.54,-57.09"/>
+</g>
+</g>
+</svg>

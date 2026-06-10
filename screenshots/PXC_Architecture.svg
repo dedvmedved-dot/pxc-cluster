@@ -1,0 +1,185 @@
+<svg width="835pt" height="750pt" viewBox="0.00 0.00 835.00 750.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 746)">
+<title>PXC_Architecture</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-746 831,-746 831,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="413.5" y="-721.8" font-family="Arial" font-size="18.00">Архитектура Percona XtraDB Cluster</text>
+<g id="clust1" class="cluster">
+<title>cluster_clients</title>
+<polygon fill="#e8f0fe" stroke="black" points="8,-623 8,-698.6 398,-698.6 398,-623 8,-623"/>
+<text xml:space="preserve" text-anchor="middle" x="203" y="-682.9" font-family="Arial" font-size="13.00">Клиенты приложений</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_pxc</title>
+<polygon fill="#e6f4ea" stroke="#34a853" points="171,-8 171,-578.4 504,-578.4 504,-8 171,-8"/>
+<text xml:space="preserve" text-anchor="middle" x="337.5" y="-561.8" font-family="Arial" font-size="14.00">Percona XtraDB Cluster (Galera)</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_management</title>
+<polygon fill="#e0e0e0" stroke="black" points="557,-617.2 557,-704.4 819,-704.4 819,-617.2 557,-617.2"/>
+<text xml:space="preserve" text-anchor="middle" x="688" y="-688.7" font-family="Arial" font-size="13.00">Infrastructure as Code</text>
+</g>
+<!-- app1 -->
+<g id="node1" class="node">
+<title>app1</title>
+<polygon fill="#bbdefb" stroke="black" points="390.15,-667 303.85,-667 303.85,-631 390.15,-631 390.15,-667"/>
+<text xml:space="preserve" text-anchor="middle" x="347" y="-652.3" font-family="Arial" font-size="11.00">Приложение 1</text>
+<text xml:space="preserve" text-anchor="middle" x="347" y="-639.1" font-family="Arial" font-size="11.00">(любая нода)</text>
+</g>
+<!-- node1 -->
+<g id="node4" class="node">
+<title>node1</title>
+<polygon fill="#a5d6a7" stroke="black" points="470.04,-545.6 351.96,-545.6 351.96,-432 470.04,-432 470.04,-545.6"/>
+<text xml:space="preserve" text-anchor="middle" x="411" y="-531.7" font-family="Arial" font-size="11.00">pxc-node1</text>
+<text xml:space="preserve" text-anchor="middle" x="411" y="-518.5" font-family="Arial" font-size="11.00">192.168.122.31</text>
+<text xml:space="preserve" text-anchor="middle" x="411" y="-505.3" font-family="Arial" font-size="11.00">MySQL 8.0</text>
+<text xml:space="preserve" text-anchor="middle" x="411" y="-492.1" font-family="Arial" font-size="11.00">Galera Replication</text>
+<text xml:space="preserve" text-anchor="middle" x="411" y="-478.9" font-family="Arial" font-size="11.00">Порт: 3306 (MySQL)</text>
+<text xml:space="preserve" text-anchor="middle" x="411" y="-465.7" font-family="Arial" font-size="11.00">Порт: 4567 (Galera)</text>
+<text xml:space="preserve" text-anchor="middle" x="411" y="-452.5" font-family="Arial" font-size="11.00">Порт: 4568 (IST)</text>
+<text xml:space="preserve" text-anchor="middle" x="411" y="-439.3" font-family="Arial" font-size="11.00">Порт: 4444 (SST)</text>
+</g>
+<!-- app1&#45;&gt;node1 -->
+<g id="edge4" class="edge">
+<title>app1-&gt;node1</title>
+<path fill="none" stroke="#4285f4" d="M371.05,-630.62C371.05,-630.62 371.05,-557.58 371.05,-557.58"/>
+<polygon fill="#4285f4" stroke="#4285f4" points="374.55,-557.58 371.05,-547.58 367.55,-557.58 374.55,-557.58"/>
+<text xml:space="preserve" text-anchor="middle" x="396.94" y="-590.6" font-family="Times,serif" font-size="14.00">Чтение/Запись</text>
+</g>
+<!-- app2 -->
+<g id="node2" class="node">
+<title>app2</title>
+<polygon fill="#bbdefb" stroke="black" points="246.15,-667 159.85,-667 159.85,-631 246.15,-631 246.15,-667"/>
+<text xml:space="preserve" text-anchor="middle" x="203" y="-652.3" font-family="Arial" font-size="11.00">Приложение 2</text>
+<text xml:space="preserve" text-anchor="middle" x="203" y="-639.1" font-family="Arial" font-size="11.00">(любая нода)</text>
+</g>
+<!-- node2 -->
+<g id="node5" class="node">
+<title>node2</title>
+<polygon fill="#a5d6a7" stroke="black" points="496.04,-337.6 377.96,-337.6 377.96,-224 496.04,-224 496.04,-337.6"/>
+<text xml:space="preserve" text-anchor="middle" x="437" y="-323.7" font-family="Arial" font-size="11.00">pxc-node2</text>
+<text xml:space="preserve" text-anchor="middle" x="437" y="-310.5" font-family="Arial" font-size="11.00">192.168.122.32</text>
+<text xml:space="preserve" text-anchor="middle" x="437" y="-297.3" font-family="Arial" font-size="11.00">MySQL 8.0</text>
+<text xml:space="preserve" text-anchor="middle" x="437" y="-284.1" font-family="Arial" font-size="11.00">Galera Replication</text>
+<text xml:space="preserve" text-anchor="middle" x="437" y="-270.9" font-family="Arial" font-size="11.00">Порт: 3306 (MySQL)</text>
+<text xml:space="preserve" text-anchor="middle" x="437" y="-257.7" font-family="Arial" font-size="11.00">Порт: 4567 (Galera)</text>
+<text xml:space="preserve" text-anchor="middle" x="437" y="-244.5" font-family="Arial" font-size="11.00">Порт: 4568 (IST)</text>
+<text xml:space="preserve" text-anchor="middle" x="437" y="-231.3" font-family="Arial" font-size="11.00">Порт: 4444 (SST)</text>
+</g>
+<!-- app2&#45;&gt;node2 -->
+<g id="edge5" class="edge">
+<title>app2-&gt;node2</title>
+<path fill="none" stroke="#4285f4" d="M203,-630.75C203,-556.5 203,-281 203,-281 203,-281 366.14,-281 366.14,-281"/>
+<polygon fill="#4285f4" stroke="#4285f4" points="366.14,-284.5 376.14,-281 366.14,-277.5 366.14,-284.5"/>
+<text xml:space="preserve" text-anchor="middle" x="246.94" y="-484.6" font-family="Times,serif" font-size="14.00">Чтение/Запись</text>
+</g>
+<!-- app3 -->
+<g id="node3" class="node">
+<title>app3</title>
+<polygon fill="#bbdefb" stroke="black" points="102.15,-667 15.85,-667 15.85,-631 102.15,-631 102.15,-667"/>
+<text xml:space="preserve" text-anchor="middle" x="59" y="-652.3" font-family="Arial" font-size="11.00">Приложение 3</text>
+<text xml:space="preserve" text-anchor="middle" x="59" y="-639.1" font-family="Arial" font-size="11.00">(любая нода)</text>
+</g>
+<!-- node3 -->
+<g id="node6" class="node">
+<title>node3</title>
+<polygon fill="#a5d6a7" stroke="black" points="472.04,-129.6 353.96,-129.6 353.96,-16 472.04,-16 472.04,-129.6"/>
+<text xml:space="preserve" text-anchor="middle" x="413" y="-115.7" font-family="Arial" font-size="11.00">pxc-node3</text>
+<text xml:space="preserve" text-anchor="middle" x="413" y="-102.5" font-family="Arial" font-size="11.00">192.168.122.33</text>
+<text xml:space="preserve" text-anchor="middle" x="413" y="-89.3" font-family="Arial" font-size="11.00">MySQL 8.0</text>
+<text xml:space="preserve" text-anchor="middle" x="413" y="-76.1" font-family="Arial" font-size="11.00">Galera Replication</text>
+<text xml:space="preserve" text-anchor="middle" x="413" y="-62.9" font-family="Arial" font-size="11.00">Порт: 3306 (MySQL)</text>
+<text xml:space="preserve" text-anchor="middle" x="413" y="-49.7" font-family="Arial" font-size="11.00">Порт: 4567 (Galera)</text>
+<text xml:space="preserve" text-anchor="middle" x="413" y="-36.5" font-family="Arial" font-size="11.00">Порт: 4568 (IST)</text>
+<text xml:space="preserve" text-anchor="middle" x="413" y="-23.3" font-family="Arial" font-size="11.00">Порт: 4444 (SST)</text>
+</g>
+<!-- app3&#45;&gt;node3 -->
+<g id="edge6" class="edge">
+<title>app3-&gt;node3</title>
+<path fill="none" stroke="#4285f4" d="M59,-630.81C59,-532.9 59,-73 59,-73 59,-73 342.23,-73 342.23,-73"/>
+<polygon fill="#4285f4" stroke="#4285f4" points="342.23,-76.5 352.23,-73 342.23,-69.5 342.23,-76.5"/>
+<text xml:space="preserve" text-anchor="middle" x="100.94" y="-380.6" font-family="Times,serif" font-size="14.00">Чтение/Запись</text>
+</g>
+<!-- node1&#45;&gt;node2 -->
+<g id="edge1" class="edge">
+<title>node1-&gt;node2</title>
+<path fill="none" stroke="#34a853" stroke-width="2" d="M424,-418.66C424,-418.66 424,-350.81 424,-350.81"/>
+<polygon fill="#34a853" stroke="#34a853" stroke-width="2" points="420.5,-418.66 424,-428.66 427.5,-418.66 420.5,-418.66"/>
+<polygon fill="#34a853" stroke="#34a853" stroke-width="2" points="427.5,-350.81 424,-340.81 420.5,-350.81 427.5,-350.81"/>
+<text xml:space="preserve" text-anchor="middle" x="453.4" y="-397.4" font-family="Times,serif" font-size="14.00">Galera gcomm</text>
+<text xml:space="preserve" text-anchor="middle" x="453.4" y="-380.6" font-family="Times,serif" font-size="14.00">(синхронная</text>
+<text xml:space="preserve" text-anchor="middle" x="453.4" y="-363.8" font-family="Times,serif" font-size="14.00">репликация)</text>
+</g>
+<!-- node2&#45;&gt;node3 -->
+<g id="edge2" class="edge">
+<title>node2-&gt;node3</title>
+<path fill="none" stroke="#34a853" stroke-width="2" d="M425,-210.66C425,-210.66 425,-142.81 425,-142.81"/>
+<polygon fill="#34a853" stroke="#34a853" stroke-width="2" points="421.5,-210.66 425,-220.66 428.5,-210.66 421.5,-210.66"/>
+<polygon fill="#34a853" stroke="#34a853" stroke-width="2" points="428.5,-142.81 425,-132.81 421.5,-142.81 428.5,-142.81"/>
+<text xml:space="preserve" text-anchor="middle" x="454.4" y="-189.4" font-family="Times,serif" font-size="14.00">Galera gcomm</text>
+<text xml:space="preserve" text-anchor="middle" x="454.4" y="-172.6" font-family="Times,serif" font-size="14.00">(синхронная</text>
+<text xml:space="preserve" text-anchor="middle" x="454.4" y="-155.8" font-family="Times,serif" font-size="14.00">репликация)</text>
+</g>
+<!-- node3&#45;&gt;node1 -->
+<g id="edge3" class="edge">
+<title>node3-&gt;node1</title>
+<path fill="none" stroke="#34a853" stroke-width="2" d="M365.96,-142.8C365.96,-142.8 365.96,-418.49 365.96,-418.49"/>
+<polygon fill="#34a853" stroke="#34a853" stroke-width="2" points="369.46,-142.8 365.96,-132.8 362.46,-142.8 369.46,-142.8"/>
+<polygon fill="#34a853" stroke="#34a853" stroke-width="2" points="362.46,-418.49 365.96,-428.49 369.46,-418.49 362.46,-418.49"/>
+<text xml:space="preserve" text-anchor="middle" x="278.4" y="-293.4" font-family="Times,serif" font-size="14.00">Galera gcomm</text>
+<text xml:space="preserve" text-anchor="middle" x="278.4" y="-276.6" font-family="Times,serif" font-size="14.00">(синхронная</text>
+<text xml:space="preserve" text-anchor="middle" x="278.4" y="-259.8" font-family="Times,serif" font-size="14.00">репликация)</text>
+</g>
+<!-- tf -->
+<g id="node7" class="node">
+<title>tf</title>
+<polygon fill="#bdbdbd" stroke="black" points="654.68,-672.8 565.32,-672.8 565.32,-625.2 654.68,-625.2 654.68,-672.8"/>
+<text xml:space="preserve" text-anchor="middle" x="610" y="-658.9" font-family="Arial" font-size="11.00">Terraform</text>
+<text xml:space="preserve" text-anchor="middle" x="610" y="-645.7" font-family="Arial" font-size="11.00">Создание 3 ВМ</text>
+<text xml:space="preserve" text-anchor="middle" x="610" y="-632.5" font-family="Arial" font-size="11.00">+ сеть</text>
+</g>
+<!-- tf&#45;&gt;node1 -->
+<g id="edge7" class="edge">
+<title>tf-&gt;node1</title>
+<path fill="none" stroke="#616161" stroke-dasharray="1,5" d="M565.07,-655C511.78,-655 430.1,-655 430.1,-655 430.1,-655 430.1,-557.51 430.1,-557.51"/>
+<polygon fill="#616161" stroke="#616161" points="433.6,-557.51 430.1,-547.51 426.6,-557.51 433.6,-557.51"/>
+</g>
+<!-- tf&#45;&gt;node2 -->
+<g id="edge8" class="edge">
+<title>tf-&gt;node2</title>
+<path fill="none" stroke="#616161" stroke-dasharray="1,5" d="M564.88,-643C528.39,-643 483.04,-643 483.04,-643 483.04,-643 483.04,-349.31 483.04,-349.31"/>
+<polygon fill="#616161" stroke="#616161" points="486.54,-349.31 483.04,-339.31 479.54,-349.31 486.54,-349.31"/>
+</g>
+<!-- tf&#45;&gt;node3 -->
+<g id="edge9" class="edge">
+<title>tf-&gt;node3</title>
+<path fill="none" stroke="#616161" stroke-dasharray="1,5" d="M610,-624.71C610,-517.5 610,-92 610,-92 610,-92 483.89,-92 483.89,-92"/>
+<polygon fill="#616161" stroke="#616161" points="483.89,-88.5 473.89,-92 483.89,-95.5 483.89,-88.5"/>
+</g>
+<!-- ansible -->
+<g id="node8" class="node">
+<title>ansible</title>
+<polygon fill="#bdbdbd" stroke="black" points="811.41,-672.8 712.59,-672.8 712.59,-625.2 811.41,-625.2 811.41,-672.8"/>
+<text xml:space="preserve" text-anchor="middle" x="762" y="-658.9" font-family="Arial" font-size="11.00">Ansible</text>
+<text xml:space="preserve" text-anchor="middle" x="762" y="-645.7" font-family="Arial" font-size="11.00">Установка PXC</text>
+<text xml:space="preserve" text-anchor="middle" x="762" y="-632.5" font-family="Arial" font-size="11.00">+ конфигурация</text>
+</g>
+<!-- ansible&#45;&gt;node1 -->
+<g id="edge10" class="edge">
+<title>ansible-&gt;node1</title>
+<path fill="none" stroke="#616161" stroke-dasharray="5,2" d="M737.29,-625.05C737.29,-580.41 737.29,-489 737.29,-489 737.29,-489 481.98,-489 481.98,-489"/>
+<polygon fill="#616161" stroke="#616161" points="481.98,-485.5 471.98,-489 481.98,-492.5 481.98,-485.5"/>
+</g>
+<!-- ansible&#45;&gt;node2 -->
+<g id="edge11" class="edge">
+<title>ansible-&gt;node2</title>
+<path fill="none" stroke="#616161" stroke-dasharray="5,2" d="M762,-624.85C762,-542.98 762,-281 762,-281 762,-281 507.75,-281 507.75,-281"/>
+<polygon fill="#616161" stroke="#616161" points="507.75,-277.5 497.75,-281 507.75,-284.5 507.75,-277.5"/>
+</g>
+<!-- ansible&#45;&gt;node3 -->
+<g id="edge12" class="edge">
+<title>ansible-&gt;node3</title>
+<path fill="none" stroke="#616161" stroke-dasharray="5,2" d="M786.71,-624.94C786.71,-513.62 786.71,-54 786.71,-54 786.71,-54 483.73,-54 483.73,-54"/>
+<polygon fill="#616161" stroke="#616161" points="483.73,-50.5 473.73,-54 483.73,-57.5 483.73,-50.5"/>
+</g>
+</g>
+</svg>

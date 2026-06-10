@@ -1,0 +1,6 @@
+sk@skhome01:~/pxc-cluster$ for ip in 192.168.122.31 192.168.122.32 192.168.122.33; do
+>   echo "Node $ip: $(ssh ubuntu@$ip ss -tlnp | grep 3306 | wc -l) port(s)"
+> done
+Node 192.168.122.31: 2 port(s) listening
+Node 192.168.122.32: 2 port(s) listening
+Node 192.168.122.33: 2 port(s) listening

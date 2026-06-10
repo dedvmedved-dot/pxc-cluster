@@ -1,0 +1,3 @@
+sk@skhome01:~/pxc-cluster$ ssh ubuntu@192.168.122.31 sudo mysql -u root -e "SHOW STATUS LIKE wsrep_incoming_addresses"
+Variable_name	Value
+wsrep_incoming_addresses	192.168.122.33:3306,192.168.122.31:3306,192.168.122.32:3306

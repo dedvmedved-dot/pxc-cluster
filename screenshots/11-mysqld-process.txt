@@ -1,0 +1,2 @@
+sk@skhome01:~/pxc-cluster$ ssh ubuntu@192.168.122.31 ps aux | grep mysqld | grep -v grep
+mysql      37807  1.7 23.0 1986288 464188 ?      Ssl  08:31   0:20 /usr/sbin/mysqld --wsrep_start_position=021c1de2-64a1-11f1-b9b7-377eca946e70:42
