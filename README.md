@@ -28,69 +28,9 @@
 ## 2. Архитектура кластера
 
 ### Схема: Архитектура Percona XtraDB Cluster
+![Архитектура Percona XtraDB Cluster](screenshots/PXC_Architecture.svg)
+---
 
-```dot
-digraph PXC_Architecture {
-    label="Архитектура Percona XtraDB Cluster";
-    labelloc=t;
-    fontsize=18;
-    fontname="Arial";
-    rankdir=TB;
-    splines=ortho;
-    nodesep=0.8;
-    ranksep=0.6;
-    
-    node [shape=box, style=rounded, fontname="Arial", fontsize=11];
-    
-    subgraph cluster_clients {
-        label="Клиенты приложений";
-        style=filled;
-        fillcolor="#E8F0FE";
-        fontsize=13;
-        
-        app1 [label="Приложение 1\n(любая нода)", fillcolor="#BBDEFB", style=filled];
-        app2 [label="Приложение 2\n(любая нода)", fillcolor="#BBDEFB", style=filled];
-        app3 [label="Приложение 3\n(любая нода)", fillcolor="#BBDEFB", style=filled];
-    }
-    
-    subgraph cluster_pxc {
-        label="Percona XtraDB Cluster (Galera)";
-        style=filled;
-        fillcolor="#E6F4EA";
-        color="#34A853";
-        fontsize=14;
-        
-        node1 [label="pxc-node1\n192.168.122.31\nMySQL 8.0\nGalera Replication\nПорт: 3306 (MySQL)\nПорт: 4567 (Galera)\nПорт: 4568 (IST)\nПорт: 4444 (SST)", fillcolor="#A5D6A7", style=filled];
-        node2 [label="pxc-node2\n192.168.122.32\nMySQL 8.0\nGalera Replication\nПорт: 3306 (MySQL)\nПорт: 4567 (Galera)\nПорт: 4568 (IST)\nПорт: 4444 (SST)", fillcolor="#A5D6A7", style=filled];
-        node3 [label="pxc-node3\n192.168.122.33\nMySQL 8.0\nGalera Replication\nПорт: 3306 (MySQL)\nПорт: 4567 (Galera)\nПорт: 4568 (IST)\nПорт: 4444 (SST)", fillcolor="#A5D6A7", style=filled];
-        
-        node1 -> node2 [label="Galera gcomm\n(синхронная\nрепликация)", dir=both, color="#34A853", penwidth=2];
-        node2 -> node3 [label="Galera gcomm\n(синхронная\nрепликация)", dir=both, color="#34A853", penwidth=2];
-        node3 -> node1 [label="Galera gcomm\n(синхронная\nрепликация)", dir=both, color="#34A853", penwidth=2];
-    }
-    
-    subgraph cluster_management {
-        label="Infrastructure as Code";
-        style=filled;
-        fillcolor="#E0E0E0";
-        fontsize=13;
-        
-        tf [label="Terraform\nСоздание 3 ВМ\n+ сеть", fillcolor="#BDBDBD", style=filled];
-        ansible [label="Ansible\nУстановка PXC\n+ конфигурация", fillcolor="#BDBDBD", style=filled];
-    }
-    
-    app1 -> node1 [label="Чтение/Запись", color="#4285F4"];
-    app2 -> node2 [label="Чтение/Запись", color="#4285F4"];
-    app3 -> node3 [label="Чтение/Запись", color="#4285F4"];
-    
-    tf -> node1 [style=dotted, color="#616161"];
-    tf -> node2 [style=dotted, color="#616161"];
-    tf -> node3 [style=dotted, color="#616161"];
-    ansible -> node1 [style=dashed, color="#616161"];
-    ansible -> node2 [style=dashed, color="#616161"];
-    ansible -> node3 [style=dashed, color="#616161"];
-}
-```
 
 ### Описание архитектуры
 
@@ -112,61 +52,9 @@ digraph PXC_Architecture {
 ## 3. Использованные технологии
 
 ### Схема: Технологический стек
+![Технологический стек](screenshots/TechStack.svg)
+---
 
-```dot
-digraph TechStack {
-    label="Технологический стек PXC Cluster";
-    labelloc=t;
-    fontsize=18;
-    fontname="Arial";
-    rankdir=TB;
-    splines=ortho;
-    nodesep=0.8;
-    ranksep=0.6;
-    
-    node [shape=box, style=rounded, fontname="Arial", fontsize=11];
-    
-    subgraph cluster_iaac {
-        label="Infrastructure as Code";
-        style=filled;
-        fillcolor="#E0E0E0";
-        fontsize=13;
-        
-        terraform [label="Terraform 1.12\nПровайдер libvirt\n3 виртуальные машины\nKVM/QEMU", fillcolor="#BDBDBD", style=filled];
-        ansible [label="Ansible\nРоль pxc\nУстановка пакетов\nШаблоны конфигов\nHandlers перезапуска", fillcolor="#BDBDBD", style=filled];
-    }
-    
-    subgraph cluster_pxc_stack {
-        label="Percona XtraDB Cluster Stack";
-        style=filled;
-        fillcolor="#E6F4EA";
-        fontsize=13;
-        
-        mysql [label="MySQL 8.0\n(Percona Server)\nSQL-движок\nОбработка запросов", fillcolor="#A5D6A7", style=filled];
-        galera [label="Galera Replication 4.24\nСинхронная репликация\nMulti-master\nСертификация транзакций", fillcolor="#A5D6A7", style=filled];
-        xtrabackup [label="Percona XtraBackup\nSST (State Snapshot)\nКопирование данных\nна новую ноду", fillcolor="#A5D6A7", style=filled];
-    }
-    
-    subgraph cluster_protocols {
-        label="Протоколы и механизмы";
-        style=filled;
-        fillcolor="#FFF3E0";
-        fontsize=13;
-        
-        gcomm [label="gcomm\nGalera Communication\nГрупповая коммуникация\nПорт 4567", fillcolor="#FFE0B2", style=filled];
-        sst [label="SST\nState Snapshot Transfer\nПолная копия данных\nxtrabackup-v2", fillcolor="#FFE0B2", style=filled];
-        ist [label="IST\nIncremental State Transfer\nИнкрементальная\nсинхронизация", fillcolor="#FFE0B2", style=filled];
-    }
-    
-    terraform -> mysql [style=dotted, label="создаёт ВМ"];
-    ansible -> mysql [style=dashed, label="устанавливает"];
-    mysql -> galera [label="использует"];
-    galera -> gcomm [label="коммуникация"];
-    galera -> sst [label="полная\nсинхронизация"];
-    galera -> ist [label="инкрементальная\nсинхронизация"];
-    xtrabackup -> sst [label="обеспечивает"];
-}
-```
 
 ### Описание технологий
 
