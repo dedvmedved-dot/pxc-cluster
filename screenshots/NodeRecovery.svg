@@ -1,0 +1,91 @@
+<svg width="404pt" height="538pt" viewBox="0.00 0.00 404.00 538.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 534.45)">
+<title>NodeRecovery</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-534.45 400.07,-534.45 400.07,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="198.04" y="-510.25" font-family="Arial" font-size="18.00">Механизмы восстановления ноды в кластере</text>
+<!-- new_node -->
+<g id="node1" class="node">
+<title>new_node</title>
+<ellipse fill="#e8f0fe" stroke="black" cx="186.96" cy="-469.74" rx="58.46" ry="31.11"/>
+<text xml:space="preserve" text-anchor="middle" x="186.96" y="-478.74" font-family="Arial" font-size="10.00">Новая нода</text>
+<text xml:space="preserve" text-anchor="middle" x="186.96" y="-466.74" font-family="Arial" font-size="10.00">подключается</text>
+<text xml:space="preserve" text-anchor="middle" x="186.96" y="-454.74" font-family="Arial" font-size="10.00">к кластеру</text>
+</g>
+<!-- decision -->
+<g id="node2" class="node">
+<title>decision</title>
+<polygon fill="#fff9c4" stroke="black" points="186.96,-401.63 70.94,-345.63 186.96,-289.63 302.98,-345.63 186.96,-401.63"/>
+<text xml:space="preserve" text-anchor="middle" x="186.96" y="-360.63" font-family="Arial" font-size="10.00">Проверка:</text>
+<text xml:space="preserve" text-anchor="middle" x="186.96" y="-348.63" font-family="Arial" font-size="10.00">Есть ли недостающие</text>
+<text xml:space="preserve" text-anchor="middle" x="186.96" y="-336.63" font-family="Arial" font-size="10.00">транзакции в gcache</text>
+<text xml:space="preserve" text-anchor="middle" x="186.96" y="-324.63" font-family="Arial" font-size="10.00">донора?</text>
+</g>
+<!-- new_node&#45;&gt;decision -->
+<g id="edge1" class="edge">
+<title>new_node-&gt;decision</title>
+<path fill="none" stroke="black" d="M186.96,-438.42C186.96,-438.42 186.96,-413.58 186.96,-413.58"/>
+<polygon fill="black" stroke="black" points="190.46,-413.58 186.96,-403.58 183.46,-413.58 190.46,-413.58"/>
+</g>
+<!-- ist_path -->
+<g id="node3" class="node">
+<title>ist_path</title>
+<polygon fill="#a5d6a7" stroke="black" points="163.47,-191.23 22.45,-191.23 22.45,-111.23 163.47,-111.23 163.47,-191.23"/>
+<text xml:space="preserve" text-anchor="middle" x="92.96" y="-178.23" font-family="Arial" font-size="10.00">IST (Incremental)</text>
+<text xml:space="preserve" text-anchor="middle" x="92.96" y="-166.23" font-family="Arial" font-size="10.00">• Быстрая синхронизация</text>
+<text xml:space="preserve" text-anchor="middle" x="92.96" y="-154.23" font-family="Arial" font-size="10.00">• Передаются только</text>
+<text xml:space="preserve" text-anchor="middle" x="92.96" y="-142.23" font-family="Arial" font-size="10.00">  недостающие writeset-ы</text>
+<text xml:space="preserve" text-anchor="middle" x="92.96" y="-130.23" font-family="Arial" font-size="10.00">• Нода быстро входит</text>
+<text xml:space="preserve" text-anchor="middle" x="92.96" y="-118.23" font-family="Arial" font-size="10.00">  в строй</text>
+</g>
+<!-- decision&#45;&gt;ist_path -->
+<g id="edge2" class="edge">
+<title>decision-&gt;ist_path</title>
+<path fill="none" stroke="black" d="M117.21,-322.94C117.21,-322.94 117.21,-203.18 117.21,-203.18"/>
+<polygon fill="black" stroke="black" points="120.71,-203.18 117.21,-193.18 113.71,-203.18 120.71,-203.18"/>
+<text xml:space="preserve" text-anchor="middle" x="156.62" y="-250.63" font-family="Times,serif" font-size="14.00">Да</text>
+<text xml:space="preserve" text-anchor="middle" x="156.62" y="-233.83" font-family="Times,serif" font-size="14.00">(транзакции в кэше)</text>
+</g>
+<!-- sst_path -->
+<g id="node4" class="node">
+<title>sst_path</title>
+<polygon fill="#ffcdd2" stroke="black" points="348.7,-203.23 213.23,-203.23 213.23,-99.23 348.7,-99.23 348.7,-203.23"/>
+<text xml:space="preserve" text-anchor="middle" x="280.96" y="-190.23" font-family="Arial" font-size="10.00">SST (Snapshot)</text>
+<text xml:space="preserve" text-anchor="middle" x="280.96" y="-178.23" font-family="Arial" font-size="10.00">• Полная синхронизация</text>
+<text xml:space="preserve" text-anchor="middle" x="280.96" y="-166.23" font-family="Arial" font-size="10.00">• xtrabackup копирует</text>
+<text xml:space="preserve" text-anchor="middle" x="280.96" y="-154.23" font-family="Arial" font-size="10.00">  всю БД с донора</text>
+<text xml:space="preserve" text-anchor="middle" x="280.96" y="-142.23" font-family="Arial" font-size="10.00">• Медленно (зависит</text>
+<text xml:space="preserve" text-anchor="middle" x="280.96" y="-130.23" font-family="Arial" font-size="10.00">  от размера БД)</text>
+<text xml:space="preserve" text-anchor="middle" x="280.96" y="-118.23" font-family="Arial" font-size="10.00">• Нода получает</text>
+<text xml:space="preserve" text-anchor="middle" x="280.96" y="-106.23" font-family="Arial" font-size="10.00">  полную копию данных</text>
+</g>
+<!-- decision&#45;&gt;sst_path -->
+<g id="edge3" class="edge">
+<title>decision-&gt;sst_path</title>
+<path fill="none" stroke="black" d="M258.1,-323.7C258.1,-323.7 258.1,-214.85 258.1,-214.85"/>
+<polygon fill="black" stroke="black" points="261.61,-214.85 258.1,-204.85 254.61,-214.85 261.61,-214.85"/>
+<text xml:space="preserve" text-anchor="middle" x="325.79" y="-259.03" font-family="Times,serif" font-size="14.00">Нет</text>
+<text xml:space="preserve" text-anchor="middle" x="325.79" y="-242.23" font-family="Times,serif" font-size="14.00">(кэш очищен или</text>
+<text xml:space="preserve" text-anchor="middle" x="325.79" y="-225.43" font-family="Times,serif" font-size="14.00">нода новая)</text>
+</g>
+<!-- synced -->
+<g id="node5" class="node">
+<title>synced</title>
+<ellipse fill="#c8e6c9" stroke="black" cx="185.96" cy="-31.11" rx="91.86" ry="31.11"/>
+<text xml:space="preserve" text-anchor="middle" x="185.96" y="-40.11" font-family="Arial" font-size="10.00">Нода синхронизирована</text>
+<text xml:space="preserve" text-anchor="middle" x="185.96" y="-28.11" font-family="Arial" font-size="10.00">SYNCED</text>
+<text xml:space="preserve" text-anchor="middle" x="185.96" y="-16.11" font-family="Arial" font-size="10.00">Готова к работе</text>
+</g>
+<!-- ist_path&#45;&gt;synced -->
+<g id="edge4" class="edge">
+<title>ist_path-&gt;synced</title>
+<path fill="none" stroke="black" d="M128.79,-110.9C128.79,-110.9 128.79,-67.27 128.79,-67.27"/>
+<polygon fill="black" stroke="black" points="132.29,-67.27 128.79,-57.27 125.29,-67.27 132.29,-67.27"/>
+</g>
+<!-- sst_path&#45;&gt;synced -->
+<g id="edge5" class="edge">
+<title>sst_path-&gt;synced</title>
+<path fill="none" stroke="black" d="M245.53,-98.89C245.53,-98.89 245.53,-66.53 245.53,-66.53"/>
+<polygon fill="black" stroke="black" points="249.03,-66.53 245.53,-56.53 242.03,-66.53 249.03,-66.53"/>
+</g>
+</g>
+</svg>
