@@ -1,0 +1,28 @@
+[mysqld]
+wsrep-provider=/usr/lib/galera4/libgalera_smm.so
+wsrep-provider-options="socket.ssl=false"
+wsrep-cluster-name=pxc-cluster
+{% if inventory_hostname == 'pxc-node1' %}
+wsrep-cluster-address=gcomm://
+{% elif inventory_hostname == 'pxc-node2' %}
+wsrep-cluster-address=gcomm://192.168.122.31
+{% else %}
+wsrep-cluster-address=gcomm://192.168.122.31,192.168.122.32
+{% endif %}
+
+wsrep-node-name={{ inventory_hostname }}
+{% if inventory_hostname == 'pxc-node1' %}
+wsrep-node-address=192.168.122.31
+{% elif inventory_hostname == 'pxc-node2' %}
+wsrep-node-address=192.168.122.32
+{% else %}
+wsrep-node-address=192.168.122.33
+{% endif %}
+
+wsrep-sst-method=xtrabackup-v2
+wsrep-sst-auth=sstuser:SstPass123
+
+default-storage-engine=InnoDB
+bind-address=0.0.0.0
+character-set-server=utf8mb4
+collation-server=utf8mb4_unicode_ci

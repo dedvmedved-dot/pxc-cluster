@@ -1,0 +1,5 @@
+---
+- hosts: pxc
+  become: yes
+  roles:
+    - roles/pxc

@@ -1,0 +1,72 @@
+---
+- name: Установка зависимостей
+  apt:
+    name:
+      - gnupg2
+      - wget
+      - lsb-release
+    state: present
+    update_cache: yes
+
+- name: Добавление репозитория Percona
+  shell: |
+    wget -O- https://repo.percona.com/apt/percona-release_latest.generic_all.deb > /tmp/percona.deb
+    dpkg -i /tmp/percona.deb
+    percona-release setup pxc-80
+  args:
+    creates: /etc/apt/sources.list.d/percona-pxc-80.list
+
+- name: Установка Percona XtraDB Cluster
+  apt:
+    name:
+      - percona-xtradb-cluster
+    state: present
+    update_cache: yes
+
+- name: Создание конфигурации MySQL
+  template:
+    src: my.cnf.j2
+    dest: /etc/mysql/my.cnf
+  notify: restart mysql
+
+- name: Запуск MySQL на первой ноде
+  systemd:
+    name: mysql
+    state: started
+    enabled: yes
+
+- name: Пауза для запуска первой ноды
+  pause:
+    seconds: 10
+  when: inventory_hostname == 'pxc-node1'
+
+- name: Запуск MySQL на остальных нодах
+  systemd:
+    name: mysql
+    state: started
+    enabled: yes
+  when: inventory_hostname != 'pxc-node1'
+
+- name: Получение временного пароля MySQL
+  shell: grep 'temporary password' /var/log/mysql/error.log | tail -1 | awk '{print $NF}'
+  register: mysql_temp_password
+  ignore_errors: yes
+
+- name: Изменение пароля root и настройка SST-пользователя
+  shell: |
+    TEMP_PASS="{{ mysql_temp_password.stdout }}"
+    mysql -u root -p"$TEMP_PASS" --connect-expired-password -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RootPass123!';" 2>/dev/null || true
+    mysql -u root -p'RootPass123!' -e "CREATE USER 'sstuser'@'localhost' IDENTIFIED BY 'SstPass123!';" 2>/dev/null || true
+    mysql -u root -p'RootPass123!' -e "GRANT RELOAD, LOCK TABLES, PROCESS, REPLICATION CLIENT ON *.* TO 'sstuser'@'localhost';" 2>/dev/null || true
+  when: inventory_hostname == 'pxc-node1'
+  ignore_errors: yes
+
+- name: Проверка статуса кластера
+  shell: mysql -u root -p'RootPass123!' -e "SHOW STATUS LIKE 'wsrep_cluster_size';" 2>/dev/null
+  register: cluster_status
+  ignore_errors: yes
+
+- name: Вывод размера кластера
+  debug:
+    msg: "{{ cluster_status.stdout }}"
+  ignore_errors: yes
